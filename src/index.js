@@ -2,7 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Router from './Router';
+import { Chart } from 'react-chartjs-2';
+import 'chartjs-adapter-luxon';
+import StreamingPlugin from 'chartjs-plugin-streaming';
 import reportWebVitals from './reportWebVitals';
+
+Chart.register(StreamingPlugin);
 
 ReactDOM.render(
   <React.StrictMode>

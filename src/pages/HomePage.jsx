@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo, useRef } from 'react';
+import { Line } from "react-chartjs-2";
+import "chartjs-plugin-streaming";
 import * as mqtt from 'mqtt';
 
 const HomePage = () => {
@@ -9,17 +11,55 @@ const HomePage = () => {
     });
     return client;
   });
-  const [msg, setMsg] = useState({});
+  const [msg, setMsg] = useState([]);
+  const chartRef = useRef();
 
   useEffect(() => {
     mqttClient.on("message", (topic, message) => {
       const data = JSON.parse(message.toString());
-      setMsg(data);
+      chartRef.current.data.datasets.forEach(function(dataset) {
+        dataset.data.push({
+          x: Date.now(),
+          y: data.prediction
+        });
+      });
+      setMsg(oldData => [...oldData, data.prediction]);
+      chartRef.current.update();
     });
   }, []);
 
+  const RealTimeChart = useMemo(() => (
+    <Line
+      ref={chartRef}
+      data={{
+        datasets: [{
+          label: 'Prediction',
+          backgroundColor: 'rgba(255, 99, 132, 0.5)',
+          borderColor: 'rgb(255, 99, 132)',
+          borderDash: [8, 4],
+          fill: true,
+          data: []
+        }]
+      }}
+      options={{
+        scales: {
+          x: {
+            type: 'realtime',
+            realtime: {
+              duration: 20000,
+              delay: 1000
+            }
+          }
+        }
+      }}
+    />
+    ), []
+  );
+
   return(
-    <div><h1>{msg.prediction}</h1></div>
+    <>
+    {RealTimeChart}
+    </>
   );
 }
 
