@@ -5,7 +5,7 @@ import * as mqtt from 'mqtt';
 
 const HomePage = () => {
   const [mqttClient, setMqttClient] = useState(() => {
-    const client = mqtt.connect("ws://mqtt.eclipseprojects.io/mqtt");
+    const client = mqtt.connect(process.env.REACT_APP_BROKER_HOST);
     client.on("connect", () => {
       client.subscribe("TCC_2021_2", (err) => {});
     });
