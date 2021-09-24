@@ -1,13 +1,16 @@
 import React, { lazy, Suspense } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import SideBar from './components/SideBar';
 
-const HomePage = lazy(() => import('./pages/HomePage'));
+const ChartPage = lazy(() => import('./pages/chart/ChartPage'));
 
 const Router = () => (
   <BrowserRouter>
     <Suspense fallback={<div>Loading...</div>}>
       <Switch>
-        <Route exact path="/" component={HomePage} />
+        <SideBar>
+          <Route exact path="/" component={ChartPage} />
+        </SideBar>
       </Switch>
     </Suspense>
   </BrowserRouter>

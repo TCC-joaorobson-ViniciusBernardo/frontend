@@ -3,15 +3,14 @@ import { Line } from "react-chartjs-2";
 import "chartjs-plugin-streaming";
 import * as mqtt from 'mqtt';
 
-const HomePage = () => {
-  const [mqttClient, setMqttClient] = useState(() => {
+const RealTimeChart = () => {
+  const [mqttClient] = useState(() => {
     const client = mqtt.connect(process.env.REACT_APP_BROKER_HOST);
     client.on("connect", () => {
-      client.subscribe("TCC_2021_2", (err) => {});
+      client.subscribe("TCC_2021_2", (err) => console.log(err));
     });
     return client;
   });
-  const [msg, setMsg] = useState([]);
   const chartRef = useRef();
 
   useEffect(() => {
@@ -23,7 +22,6 @@ const HomePage = () => {
           y: data.prediction
         });
       });
-      setMsg(oldData => [...oldData, data.prediction]);
       chartRef.current.update();
     });
   }, []);
@@ -58,9 +56,9 @@ const HomePage = () => {
 
   return(
     <>
-    {RealTimeChart}
+      {RealTimeChart}
     </>
   );
 }
 
-export default HomePage;
+export default RealTimeChart;
