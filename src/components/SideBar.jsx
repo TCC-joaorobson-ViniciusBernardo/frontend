@@ -22,37 +22,51 @@ import FunctionsIcon from '@mui/icons-material/Functions';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import { Link, useLocation } from "react-router-dom";
+import ListItemButton from '@mui/material/ListItemButton';
+import ROUTES from '../config/routes';
 
 const drawerWidth = 240;
 
-const mainListItems = (
+const mainListItems = () => {
+  const location = useLocation();
+  return(
     <div>
-      <ListItem button>
-        <ListItemIcon>
-          <ShowChartIcon />
-        </ListItemIcon>
-        <ListItemText primary="Previsões" />
+      <ListItem disablePadding component={props => <Link {...props} />} to={ROUTES.predictionPage} button>
+        <ListItemButton selected={location.pathname === ROUTES.predictionPage}>
+          <ListItemIcon>
+            <ShowChartIcon />
+          </ListItemIcon>
+          <ListItemText primary="Previsões" />
+        </ListItemButton>
       </ListItem>
-      <ListItem button>
-        <ListItemIcon>
-          <PieChartIcon />
-        </ListItemIcon>
-        <ListItemText primary="Curvas de Carga" />
+      <ListItem disablePadding component={props => <Link {...props} />} to={ROUTES.loadCurvePage} button>
+        <ListItemButton selected={location.pathname === ROUTES.loadCurvePage}>
+          <ListItemIcon>
+            <PieChartIcon />
+          </ListItemIcon>
+          <ListItemText primary="Curvas de Carga" />
+        </ListItemButton>
       </ListItem>
-      <ListItem button>
-        <ListItemIcon>
-          <ExploreIcon />
-        </ListItemIcon>
-        <ListItemText primary="Sandbox" />
+      <ListItem disablePadding component={props => <Link {...props} />} to={ROUTES.sandboxPage} button>
+        <ListItemButton selected={location.pathname === ROUTES.sandboxPage}>
+          <ListItemIcon>
+            <ExploreIcon />
+          </ListItemIcon>
+          <ListItemText primary="Sandbox" />
+        </ListItemButton>
       </ListItem>
-      <ListItem button>
-        <ListItemIcon>
-          <FunctionsIcon />
-        </ListItemIcon>
-        <ListItemText primary="Modelos Matemáticos" />
+      <ListItem disablePadding component={props => <Link {...props} />} to={ROUTES.mathModelsPage} button>
+        <ListItemButton selected={location.pathname === ROUTES.mathModelsPage}>
+          <ListItemIcon>
+            <FunctionsIcon />
+          </ListItemIcon>
+          <ListItemText primary="Modelos Matemáticos" />
+        </ListItemButton>
       </ListItem>
     </div>
   );
+};
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
@@ -158,7 +172,7 @@ const SideBar = ({ children }) => {
             </IconButton>
           </Toolbar>
           <Divider />
-          <List>{mainListItems}</List>
+          <List>{mainListItems()}</List>
         </Drawer>
         <Box
           component="main"
