@@ -16,14 +16,19 @@ const RealTimeChart = () => {
   useEffect(() => {
     mqttClient.on("message", (topic, message) => {
       const data = JSON.parse(message.toString());
-      chartRef.current.data.datasets.forEach(function(dataset) {
-        dataset.data.push({
-          x: Date.now(),
-          y: data.prediction
+      if(chartRef.current){
+        chartRef.current.data.datasets.forEach(function(dataset) {
+          dataset.data.push({
+            x: Date.now(),
+            y: data.prediction
+          });
         });
-      });
-      chartRef.current.update();
+        chartRef.current.update();
+      }
     });
+    return () => {
+      mqttClient.end();
+    }
   }, []);
 
   const RealTimeChart = useMemo(() => (
