@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { startFetching, finishFetching } from './reducers/mathModelSlice';
 import axios from '../../axiosInstance';
 import { Divider, Chip } from '@mui/material';
+import moment from 'moment';
+import 'moment/locale/pt-br';
 
 const MathModelPage = () => {
   const mathModelReducer = useSelector((state) => state.mathModel)
@@ -57,7 +59,8 @@ const MathModelPage = () => {
                 <p>
                   {mathModel?.info?.experiment_id}
                 </p>
-                {new Date(mathModel?.info?.start_time).toString()}
+                <p>Criação: {moment(mathModel?.info?.start_time).calendar()}</p>
+                <p>Duração: {moment.duration(moment(mathModel?.info?.end_time).diff(moment(mathModel?.info?.start_time))).as('seconds')} s</p>
               </div>
               <p>
                 {mathModel?.info?.run_id}
