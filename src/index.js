@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import Router from './Router';
 import { Chart } from 'react-chartjs-2';
-import 'chartjs-adapter-luxon';
 import StreamingPlugin from 'chartjs-plugin-streaming';
-import reportWebVitals from './reportWebVitals';
-import store from './store';
+import 'chartjs-adapter-luxon';
 import { Provider } from 'react-redux';
+import './index.css';
+import reportWebVitals from './reportWebVitals';
+import Router from './Router';
+import store from './store';
+import Modal from './components/modal/Modal';
 
 Chart.register(StreamingPlugin);
 
@@ -15,6 +16,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <Router />
+      <Modal />
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
