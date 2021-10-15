@@ -7,6 +7,7 @@ export const StyledText = styled.p`
   line-height: ${props => (props.lineHeight || 'initial')};
   text-transform: ${props => (props.textTransform || 'none')};
   color: ${props => (props.color || 'initial')};
+  flex-basis: ${props => props.flexBasis || 'initial'};
   margin: ${props => (props.margin || 'initial')};
   overflow: ${props => props.overflow || 'unset'};
   text-overflow: ${props => props.textOverflow || 'unset'};
