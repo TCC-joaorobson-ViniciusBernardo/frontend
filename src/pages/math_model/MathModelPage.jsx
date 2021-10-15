@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { startFetching, finishFetching } from './reducers/mathModelSlice';
 import axios from '../../axiosInstance';
 import MathModelCard from './components/MathModelCard';
+import ENDPOINTS from '../../config/api_endpoints';
 import { Divider } from '@mui/material';
 
 const MathModelPage = () => {
@@ -16,7 +17,7 @@ const MathModelPage = () => {
   const getData = () => {
     dispatch(startFetching());
     axios
-      .get('/experiments', {
+      .get(ENDPOINTS.experiments, {
         params: { experiment_id: 0 },
       })
       .then((response) => {
