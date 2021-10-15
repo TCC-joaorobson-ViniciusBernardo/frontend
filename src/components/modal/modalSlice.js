@@ -6,6 +6,7 @@ export const modalSlice = createSlice({
   name: 'modal',
   initialState: {
     open: false,
+    props: {},
     title: '',
     content: {
       props: {},
@@ -13,21 +14,23 @@ export const modalSlice = createSlice({
     },
     actions: {
       props: {},
-      component: (<DefaultActions />)
+      component: <DefaultActions />
     },
   },
   reducers: {
     openModal: (state, action) => {
       state.open = true;
       state.title = action.payload.title;
+      state.props = action.payload.props;
       state.content = action.payload.content || state.content;
       state.actions = action.payload.actions || state.actions;
     },
     closeModal: (state) => {
       state.open = false;
       state.title = '';
+      state.props = {};
       state.content = { props: {}, component: null };
-      state.actions = { props: {}, component: (<DefaultActions />) };
+      state.actions = { props: {}, component: <DefaultActions /> };
     },
   },
 })

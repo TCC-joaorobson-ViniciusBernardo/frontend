@@ -11,6 +11,7 @@ const Modal = () => {
     <Dialog
       open={modalReducer.open}
       onClose={() => dispatch(closeModal())}
+      {...modalReducer.props}
     >
       <DialogTitle>
         {modalReducer.title}
