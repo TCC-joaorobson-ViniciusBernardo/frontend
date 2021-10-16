@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { startFetching, finishFetching } from './reducers/mathModelSlice';
 import axios from '../../axiosInstance';
 import MathModelCard from './components/MathModelCard';
+import MathModelFilters from './components/MathModelFilters';
 import ENDPOINTS from '../../config/api_endpoints';
 import { Divider } from '@mui/material';
 
@@ -30,7 +31,7 @@ const MathModelPage = () => {
 
   return(
     <div style={{ width: '100%' }}>
-      <h1>Modelos</h1>
+      <MathModelFilters />
       {mathModelReducer.mathModelList.map((mathModel, index) => {
         return(
           <div key={index}>
