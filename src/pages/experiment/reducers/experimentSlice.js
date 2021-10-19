@@ -1,12 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export const mathModelSlice = createSlice({
-  name: 'mathModel',
+export const experimentSlice = createSlice({
+  name: 'experiment',
   initialState: {
     total: 0,
     hasMore: false,
     isLoading: false,
-    mathModelList: [],
+    experimentList: [],
   },
   reducers: {
     startFetching: (state) => {
@@ -14,15 +14,15 @@ export const mathModelSlice = createSlice({
     },
     finishFetching: (state, action) => {
       state.isLoading = false;
-      state.mathModelList = action.payload.items;
+      state.experimentList = action.payload.items;
       state.total = action.payload.total;
     },
     reset: (state) => {
-      state.mathModelList = [];
+      state.experimentList = [];
     },
   },
 })
 
-export const { startFetching, finishFetching, reset } = mathModelSlice.actions
+export const { startFetching, finishFetching, reset } = experimentSlice.actions
 
-export default mathModelSlice.reducer
+export default experimentSlice.reducer

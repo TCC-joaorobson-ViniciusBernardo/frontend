@@ -2,7 +2,7 @@ import React from 'react';
 import { Typography } from '@mui/material';
 import { StyledText, FlexDiv } from '../styles';
 
-const MathModelDetail = ({ mathModelData }) => {
+const ExperimentDetail = ({ experimentData }) => {
 
   const renderObject = (obj) => (
     Object.entries(obj).map((keyValue, index) => {
@@ -25,16 +25,16 @@ const MathModelDetail = ({ mathModelData }) => {
         <Typography variant="h6" component="div" gutterBottom>
           Métricas
         </Typography>
-        {renderObject(mathModelData?.metrics)}
+        {renderObject(experimentData?.metrics)}
       </FlexDiv>
       <FlexDiv flexDirection='column' margin='16px 0px 0px 0px'>
         <Typography variant="h6" component="div" gutterBottom>
           Parâmetros
         </Typography>
-        {renderObject(mathModelData?.params)}
+        {renderObject(experimentData?.params)}
       </FlexDiv>
     </FlexDiv>
   );
 }
 
-export default MathModelDetail;
+export default ExperimentDetail;

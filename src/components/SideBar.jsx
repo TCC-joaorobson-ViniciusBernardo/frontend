@@ -56,12 +56,12 @@ const mainListItems = () => {
           <ListItemText primary="Sandbox" />
         </ListItemButton>
       </ListItem>
-      <ListItem disablePadding component={props => <Link {...props} />} to={ROUTES.mathModelsPage} button>
-        <ListItemButton selected={location.pathname === ROUTES.mathModelsPage}>
+      <ListItem disablePadding component={props => <Link {...props} />} to={ROUTES.experimentsPage} button>
+        <ListItemButton selected={location.pathname === ROUTES.experimentsPage}>
           <ListItemIcon>
             <FunctionsIcon />
           </ListItemIcon>
-          <ListItemText primary="Modelos Matemáticos" />
+          <ListItemText primary="Experimentos" />
         </ListItemButton>
       </ListItem>
     </div>

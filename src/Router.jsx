@@ -8,7 +8,7 @@ import ROUTES from './config/routes';
 const ChartPage = lazy(() => import('./pages/chart/ChartPage'));
 const LoadCurvePage = lazy(() => import('./pages/load_curve/LoadCurvePage'));
 const SandboxPage = lazy(() => import('./pages/sandbox/SandboxPage'));
-const MathModelPage = lazy(() => import('./pages/math_model/MathModelPage'));
+const ExperimentsPage = lazy(() => import('./pages/experiment/ExperimentsPage'));
 
 const Router = () => (
   <BrowserRouter>
@@ -25,7 +25,7 @@ const Router = () => (
           <Route exact path={ROUTES.predictionPage} component={ChartPage} />
           <Route exact path={ROUTES.loadCurvePage} component={LoadCurvePage} />
           <Route exact path={ROUTES.sandboxPage} component={SandboxPage} />
-          <Route exact path={ROUTES.mathModelsPage} component={MathModelPage} />
+          <Route exact path={ROUTES.experimentsPage} component={ExperimentsPage} />
         </SideBar>
       </Switch>
     </Suspense>

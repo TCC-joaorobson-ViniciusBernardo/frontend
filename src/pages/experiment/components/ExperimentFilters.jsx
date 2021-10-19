@@ -13,11 +13,11 @@ import {
   MenuItem
 } from '@mui/material';
 import { FlexDiv } from '../styles';
-import { searchExperiment, selectModelType, selectStatus } from '../reducers/mathModelFiltersSlice';
+import { searchExperiment, selectModelType, selectStatus } from '../reducers/experimentFiltersSlice';
 import ALL_STATUS from '../../../config/constants';
 
-const MathModelFilters = () => {
-  const mathModelFilters = useSelector((state) => state.mathModelFilters)
+const ExperimentFilters = () => {
+  const experimentFilters = useSelector((state) => state.experimentFilters)
   const dispatch = useDispatch();
 
   return(
@@ -25,7 +25,7 @@ const MathModelFilters = () => {
       <FlexDiv flexBasis='45%'>
         <TextField
           fullWidth
-          value={mathModelFilters.experimentName}
+          value={experimentFilters.experimentName}
           onChange={(e) => dispatch(searchExperiment(e.target.value))}
           label='Buscar experimento'
           InputProps={{
@@ -44,7 +44,7 @@ const MathModelFilters = () => {
             labelId="model-type-filter-label"
             id="model-type-filter"
             multiple
-            value={mathModelFilters.modelType}
+            value={experimentFilters.modelType}
             onChange={(e) => dispatch(selectModelType(e.target.value))}
             input={<OutlinedInput id="select-multiple-chip" label="Tipo do Modelo" />}
             renderValue={(selected) => (
@@ -73,7 +73,7 @@ const MathModelFilters = () => {
             labelId="status-filter-label"
             id="status-filter"
             multiple
-            value={mathModelFilters.status}
+            value={experimentFilters.status}
             onChange={(e) => dispatch(selectStatus(e.target.value))}
             input={<OutlinedInput id="select-multiple-chip" label="Status" />}
             renderValue={(selected) => (
@@ -99,4 +99,4 @@ const MathModelFilters = () => {
   );
 }
 
-export default MathModelFilters;
+export default ExperimentFilters;

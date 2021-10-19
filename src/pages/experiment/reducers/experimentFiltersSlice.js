@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export const mathModelFiltersSlice = createSlice({
-  name: 'mathModelFilters',
+export const experimentFiltersSlice = createSlice({
+  name: 'experimentFilters',
   initialState: {
     page: 1,
     size: 10,
@@ -40,6 +40,6 @@ export const {
   selectStatus,
   selectModelType,
   reset
-} = mathModelFiltersSlice.actions
+} = experimentFiltersSlice.actions
 
-export default mathModelFiltersSlice.reducer
+export default experimentFiltersSlice.reducer
