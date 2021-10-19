@@ -4,6 +4,7 @@ export const mathModelFiltersSlice = createSlice({
   name: 'mathModelFilters',
   initialState: {
     page: 1,
+    size: 10,
     status: [],
     modelType: [],
     experimentName: null,

@@ -21,7 +21,7 @@ const MathModelFilters = () => {
   const dispatch = useDispatch();
 
   return(
-    <FlexDiv margin='16px 0px' flexDirection='row' justifyContent='space-evenly'>
+    <FlexDiv margin='16px 0px' flexDirection='row' justifyContent='space-evenly' flexBasis='10%'>
       <FlexDiv flexBasis='45%'>
         <TextField
           fullWidth
