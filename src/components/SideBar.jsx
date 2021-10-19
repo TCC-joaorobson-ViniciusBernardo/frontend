@@ -187,11 +187,7 @@ const SideBar = ({ children }) => {
           }}
         >
           <Toolbar />
-          <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-            <Grid container spacing={3}>
-              {children}
-            </Grid>
-          </Container>
+            {children}
         </Box>
       </Box>
     </ThemeProvider>

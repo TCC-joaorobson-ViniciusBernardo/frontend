@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 export const mathModelSlice = createSlice({
   name: 'mathModel',
   initialState: {
+    total: 0,
     hasMore: false,
     isLoading: false,
     mathModelList: [],
@@ -13,7 +14,8 @@ export const mathModelSlice = createSlice({
     },
     finishFetching: (state, action) => {
       state.isLoading = false;
-      state.mathModelList = action.payload;
+      state.mathModelList = action.payload.items;
+      state.total = action.payload.total;
     },
     reset: (state) => {
       state.mathModelList = [];

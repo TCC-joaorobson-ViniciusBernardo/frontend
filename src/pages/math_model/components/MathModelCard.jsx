@@ -7,29 +7,10 @@ import 'moment/locale/pt-br';
 import { StyledText, FlexDiv } from '../styles';
 import { openModal } from '../../../components/modal/modalSlice';
 import MathModelDetail from './MathModelDetail';
+import ALL_STATUS from '../../../config/constants';
 
 const MathModelCard = ({ mathModel }) => {
   const dispatch = useDispatch();
-
-  const getChipColor = (label) => {
-    let color = null;
-
-    switch (label) {
-      case 'FINISHED':
-        color = 'success';
-        break;
-
-      case 'FAILED':
-        color = 'error';
-        break;
-
-      default:
-        color = 'info';
-        break;
-    }
-
-    return color;
-  }
 
   const getModalParams = (mathModel) => {
     return({
@@ -71,7 +52,7 @@ const MathModelCard = ({ mathModel }) => {
         <Chip
           label={mathModel?.info?.status}
           variant="outlined"
-          color={getChipColor(mathModel?.info?.status)}
+          color={ALL_STATUS[mathModel?.info?.status]?.color}
           size="small"
         />
       </FlexDiv>
