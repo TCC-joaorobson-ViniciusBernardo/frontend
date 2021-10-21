@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { startFetching, finishFetching } from './reducers/experimentSlice';
-import axios from '../../axiosInstance';
+import { axiosApi } from '../../axiosInstance';
 import ExperimentCard from './components/ExperimentCard';
 import ExperimentFilters from './components/ExperimentFilters';
 import ExperimentPagination from './components/ExperimentPagination';
-import ENDPOINTS from '../../config/api_endpoints';
+import API_ENDPOINTS from '../../config/api_endpoints';
 import { Divider, CircularProgress } from '@mui/material';
 import { FlexDiv } from './styles';
 
@@ -20,8 +20,8 @@ const ExperimentsPage = () => {
 
   const getData = () => {
     dispatch(startFetching());
-    axios
-      .get(ENDPOINTS.experiments, {
+    axiosApi
+      .get(API_ENDPOINTS.experiments, {
         params: { ...experimentFilters, experiment_id: 0 },
       })
       .then((response) => {
