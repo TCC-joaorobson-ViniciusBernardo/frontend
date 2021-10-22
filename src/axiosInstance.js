@@ -1,5 +1,7 @@
 import axios from 'axios';
 
-const axiosInstance = axios.create({ baseURL: process.env.REACT_APP_API_HOST });
+const axiosApi = axios.create({ baseURL: process.env.REACT_APP_API_HOST });
 
-export default axiosInstance;
+const axiosSige = axios.create({ baseURL: process.env.REACT_APP_SIGE_HOST });
+
+export { axiosApi, axiosSige };

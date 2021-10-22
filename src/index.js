@@ -4,6 +4,8 @@ import { Chart } from 'react-chartjs-2';
 import StreamingPlugin from 'chartjs-plugin-streaming';
 import 'chartjs-adapter-luxon';
 import { Provider } from 'react-redux';
+import DateAdapter from '@mui/lab/AdapterMoment';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import Router from './Router';
@@ -15,8 +17,10 @@ Chart.register(StreamingPlugin);
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Router />
-      <Modal />
+      <LocalizationProvider dateAdapter={DateAdapter}>
+        <Router />
+        <Modal />
+      </LocalizationProvider>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

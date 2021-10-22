@@ -1,5 +1,5 @@
-const ENDPOINTS = {
+const API_ENDPOINTS = {
   experiments: "/experiments",
 };
 
-export default ENDPOINTS;
+export default API_ENDPOINTS;

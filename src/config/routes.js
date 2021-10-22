@@ -2,7 +2,7 @@ const ROUTES = {
   loadCurvePage: "/load-curves",
   predictionPage: "/predictions",
   sandboxPage: "/sandbox",
-  mathModelsPage: "/math-models"
+  experimentsPage: "/experiments"
 };
 
 export default ROUTES;
