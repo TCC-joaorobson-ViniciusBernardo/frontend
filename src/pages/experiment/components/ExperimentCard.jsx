@@ -1,6 +1,9 @@
 import React from 'react';
-import { Chip, IconButton, Tooltip, Switch } from '@mui/material';
+import { Chip, IconButton, Tooltip, Checkbox } from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
+import CancelIcon from '@mui/icons-material/Cancel';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { useDispatch } from 'react-redux';
 import moment from 'moment';
 import 'moment/locale/pt-br';
@@ -18,14 +21,14 @@ const ExperimentCard = ({ experiment }) => {
       props: { fullWidth: true },
       content: {
         props: { dividers: true },
-        component: <ExperimentDetail experimentData={experiment.data} />
+        component: <ExperimentDetail experimentData={experiment.data} predictions={experiment.predictions} />
       }
     });
   }
 
   return(
     <FlexDiv flexDirection='row' justifyContent='space-around' margin='8px 0px'>
-      <FlexDiv flexDirection='column' flexBasis='20%' overflow='hidden'>
+      <FlexDiv flexDirection='column' flexBasis='20%' overflow='hidden' alignItems='center'>
         <StyledText fontWeight='bold' fontSize='16px' lineHeight='19px' overflow='hidden' textOverflow='ellipsis' whiteSpace='nowrap'>
           {experiment?.experiment_name}
         </StyledText>
@@ -36,19 +39,19 @@ const ExperimentCard = ({ experiment }) => {
           Duração: {moment.duration(moment(experiment?.info?.end_time).diff(moment(experiment?.info?.start_time))).as('seconds')} s
         </StyledText>
       </FlexDiv>
-      <FlexDiv alignItems='center'>
+      <FlexDiv justifyContent='center' flexBasis='20%'>
         <Tooltip title={experiment?.has_registered_model ? 'Registrou modelo' : 'Não Registrou Modelo'} arrow>
           <span>
-            <Switch disabled defaultChecked={experiment?.has_registered_model} size="small" />
+            <Checkbox disabled checked={experiment?.has_registered_model} checkedIcon={<CheckCircleIcon />} indeterminate={!experiment?.has_registered_model} indeterminateIcon={<CancelIcon />} />
           </span>
         </Tooltip>
       </FlexDiv>
-      <FlexDiv alignItems='center' flexBasis='12%'>
+      <FlexDiv flexBasis='20%' justifyContent='center' alignItems='center'>
         <StyledText>
-          {experiment?.data?.tags?.model_name}
+          {experiment?.data?.params?.model_name}
         </StyledText>
       </FlexDiv>
-      <FlexDiv alignItems='center'>
+      <FlexDiv justifyContent='center' flexBasis='20%' alignItems='center'>
         <Chip
           label={experiment?.info?.status}
           variant="outlined"
@@ -56,10 +59,15 @@ const ExperimentCard = ({ experiment }) => {
           size="small"
         />
       </FlexDiv>
-      <FlexDiv justifyContent='center' alignItems='center'>
+      <FlexDiv justifyContent='center' alignItems='center' flexBasis='20%'>
         <Tooltip title="Ver Detalhes" arrow>
           <IconButton onClick={() => dispatch(openModal(getModalParams(experiment)))}>
             <VisibilityIcon />
+          </IconButton>
+        </Tooltip>
+        <Tooltip title="Excluir" arrow>
+          <IconButton onClick={() => dispatch(openModal(getModalParams(experiment)))}>
+            <DeleteIcon />
           </IconButton>
         </Tooltip>
       </FlexDiv>

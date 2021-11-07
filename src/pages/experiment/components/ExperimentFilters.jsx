@@ -55,7 +55,7 @@ const ExperimentFilters = () => {
               </Box>
             )}
           >
-            {['XGBRegressor', 'LinearRegressor'].map((name) => (
+            {['SVR', 'XGBRegressor', 'LinearRegressor'].map((name) => (
               <MenuItem
                 key={name}
                 value={name}
