@@ -1,9 +1,10 @@
 import React from 'react';
+import MockChart from './MockChart';
 import RealTimeChart from './RealTimeChart';
 
 const ChartPage = () => {
   return(
-    <RealTimeChart />
+    <MockChart />
   );
 }
 
