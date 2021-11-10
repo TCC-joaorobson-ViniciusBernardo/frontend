@@ -10,7 +10,7 @@ import 'moment/locale/pt-br';
 import { StyledText, FlexDiv } from '../styles';
 import { openModal } from '../../../components/modal/modalSlice';
 import ExperimentDetail from './ExperimentDetail';
-import ALL_STATUS from '../../../config/constants';
+import { ALL_STATUS } from '../../../config/constants';
 
 const ExperimentCard = ({ experiment }) => {
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ const ExperimentCard = ({ experiment }) => {
   const getModalParams = (experiment) => {
     return({
       title: experiment?.experiment_name,
-      props: { fullWidth: true },
+      props: { fullWidth: true, maxWidth: 'md' },
       content: {
         props: { dividers: true },
         component: <ExperimentDetail experimentData={experiment.data} predictions={experiment.predictions} />

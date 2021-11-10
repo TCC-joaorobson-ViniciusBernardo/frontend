@@ -41,10 +41,10 @@ const DepartmentSelect = () => {
   } else {
     return(
       <FormControl sx={{ minWidth: 100 }}>
-        <InputLabel htmlFor="grouped-departments">Departamento</InputLabel>
+        <InputLabel htmlFor="grouped-departments">Prédio</InputLabel>
         <Select
           native
-          label="Departamento"
+          label="Prédio"
           defaultValue=""
           id="grouped-departments"
           value={sandboxFilters.id}

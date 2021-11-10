@@ -16,6 +16,7 @@ export const StyledText = styled.p`
 
 export const FlexDiv = styled.div`
   display: flex;
+  position: ${props => props.position || 'inherit'};
   flex-direction: ${props => props.flexDirection || 'row'};
   flex-wrap: ${props => props.flexWrap || 'nowrap'};
   justify-content: ${props => props.justifyContent || 'initial'};
@@ -35,6 +36,7 @@ export const FlexDiv = styled.div`
   border: ${props => props.border || 'unset'};
   background-color: ${props => props.backgroundColor || 'initial'};
   align-items: ${props => props.alignItems || 'initial'};
+  gap: ${props => props.gap || 'initial'};
 
   &:hover {
     background-color: ${props => props.backgroundColorOnHover || props.backgroundColor};

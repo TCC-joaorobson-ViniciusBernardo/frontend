@@ -28,22 +28,6 @@ const mainListItems = () => {
   const location = useLocation();
   return(
     <div>
-      <ListItem disablePadding component={props => <Link {...props} />} to={ROUTES.predictionPage} button>
-        <ListItemButton selected={location.pathname === ROUTES.predictionPage}>
-          <ListItemIcon>
-            <ShowChartIcon />
-          </ListItemIcon>
-          <ListItemText primary="Previsões" />
-        </ListItemButton>
-      </ListItem>
-      <ListItem disablePadding component={props => <Link {...props} />} to={ROUTES.loadCurvePage} button>
-        <ListItemButton selected={location.pathname === ROUTES.loadCurvePage}>
-          <ListItemIcon>
-            <PieChartIcon />
-          </ListItemIcon>
-          <ListItemText primary="Curvas de Carga" />
-        </ListItemButton>
-      </ListItem>
       <ListItem disablePadding component={props => <Link {...props} />} to={ROUTES.sandboxPage} button>
         <ListItemButton selected={location.pathname === ROUTES.sandboxPage}>
           <ListItemIcon>
@@ -58,6 +42,22 @@ const mainListItems = () => {
             <FunctionsIcon />
           </ListItemIcon>
           <ListItemText primary="Experimentos" />
+        </ListItemButton>
+      </ListItem>
+      <ListItem disablePadding component={props => <Link {...props} />} to={ROUTES.loadCurvePage} button>
+        <ListItemButton selected={location.pathname === ROUTES.loadCurvePage}>
+          <ListItemIcon>
+            <PieChartIcon />
+          </ListItemIcon>
+          <ListItemText primary="Curvas de Carga" />
+        </ListItemButton>
+      </ListItem>
+      <ListItem disablePadding component={props => <Link {...props} />} to={ROUTES.predictionPage} button>
+        <ListItemButton selected={location.pathname === ROUTES.predictionPage}>
+          <ListItemIcon>
+            <ShowChartIcon />
+          </ListItemIcon>
+          <ListItemText primary="Previsões" />
         </ListItemButton>
       </ListItem>
     </div>

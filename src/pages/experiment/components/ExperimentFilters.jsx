@@ -14,7 +14,7 @@ import {
 } from '@mui/material';
 import { FlexDiv } from '../styles';
 import { searchExperiment, selectModelType, selectStatus } from '../reducers/experimentFiltersSlice';
-import ALL_STATUS from '../../../config/constants';
+import { ALL_STATUS } from '../../../config/constants';
 
 const ExperimentFilters = () => {
   const experimentFilters = useSelector((state) => state.experimentFilters)

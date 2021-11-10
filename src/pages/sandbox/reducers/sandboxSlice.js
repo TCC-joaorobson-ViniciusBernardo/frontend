@@ -26,7 +26,6 @@ export const sandboxSlice = createSlice({
           hourOfDay: moment(x[0]).format('HH')
         })
       );
-      console.log('ASDF', state.consumptions);
       state.min = action.payload.min;
       state.max = action.payload.max;
     },
