@@ -37,7 +37,6 @@ const ExperimentForm = () => {
     test_size: '30%',
     start_date: "01/01/2021",
     end_date: "08/11/2021",
-    normalize: "False",
     positive: "False",
     fit_intercept: "False",
     remove_outliers: "True",
@@ -140,10 +139,6 @@ const ExperimentForm = () => {
                 </Grid>
               </FlexDiv>
               <FlexDiv flexDirection='column'>
-                <FormControlLabel
-                  control={<Switch checked={false} name="normalize" />}
-                  label="normalize"
-                />
                 <FormControlLabel
                   control={<Switch checked={false} name="positive" />}
                   label="positive"

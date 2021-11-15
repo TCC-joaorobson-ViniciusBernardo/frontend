@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { axiosSige } from "../../../axiosInstance";
-import { FormControl, InputLabel, Select, Skeleton, Box } from "@mui/material";
+import { FormControl, InputLabel, Select, Skeleton } from "@mui/material";
 import SIGE_ENDPOINTS from "../../../config/sige_endpoints";
 import { changeTransductor } from "../reducers/sandboxFiltersSlice";
 
