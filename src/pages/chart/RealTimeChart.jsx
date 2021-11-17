@@ -5,7 +5,7 @@ import "chartjs-plugin-streaming";
 import * as mqtt from "mqtt";
 import moment from "moment";
 import "moment/locale/pt-br";
-import { update } from "./reducers/realTimeChartSlice";
+import { updateChartValues } from "./reducers/realTimeChartSlice";
 
 const RealTimeChart = () => {
   const dispatch = useDispatch();
@@ -42,7 +42,7 @@ const RealTimeChart = () => {
       });
       chartRef.current.update();
     }
-    dispatch(update({ labels, predictions, data: realData }));
+    dispatch(updateChartValues({ labels, predictions, data: realData }));
   };
 
   useEffect(() => {
@@ -50,6 +50,7 @@ const RealTimeChart = () => {
       const data = JSON.parse(message.toString());
       updateChart(data);
     });
+
     return () => {
       mqttClient.end();
     };

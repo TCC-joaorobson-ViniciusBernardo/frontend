@@ -8,14 +8,14 @@ export const realTimeChartSlice = createSlice({
     predictions: [],
   },
   reducers: {
-    update: (state, action) => {
-      state.labels = action.payload.labels;
-      state.data = action.payload.data;
-      state.predictions = action.payload.predictions;
+    updateChartValues: (state, action) => {
+      state.labels = [...action.payload.labels];
+      state.data = [...action.payload.data];
+      state.predictions = [...action.payload.predictions];
     },
   },
 })
 
-export const { update } = realTimeChartSlice.actions
+export const { updateChartValues } = realTimeChartSlice.actions
 
 export default realTimeChartSlice.reducer
