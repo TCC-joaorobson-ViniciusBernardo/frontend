@@ -4,16 +4,20 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import CancelIcon from '@mui/icons-material/Cancel';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import 'moment/locale/pt-br';
 import { StyledText, FlexDiv } from '../styles';
 import { openModal } from '../../../components/modal/modalSlice';
 import ExperimentDetail from './ExperimentDetail';
 import { ALL_STATUS } from '../../../config/constants';
+import { axiosApi } from '../../../axiosInstance';
+import API_ENDPOINTS from '../../../config/api_endpoints';
+import { finishFetching, startFetching } from '../reducers/experimentSlice';
 
 const ExperimentCard = ({ experiment }) => {
   const dispatch = useDispatch();
+  const experimentFilters = useSelector((state) => state.experimentFilters);
 
   const getModalParams = (experiment) => {
     return({
@@ -24,6 +28,31 @@ const ExperimentCard = ({ experiment }) => {
         component: <ExperimentDetail experimentData={experiment.data} predictions={experiment.predictions} />
       }
     });
+  }
+
+  const refreshExperiments = () => {
+    dispatch(startFetching());
+    axiosApi
+      .get(API_ENDPOINTS.experiments, {
+        params: { ...experimentFilters, experiment_id: 0 },
+      })
+      .then((response) => {
+        dispatch(finishFetching(response.data));
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  const deleteExperiment = (runId) => {
+    axiosApi
+      .delete(API_ENDPOINTS.remove(runId))
+      .then((response) => {
+        refreshExperiments();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
 
   return(
@@ -66,7 +95,7 @@ const ExperimentCard = ({ experiment }) => {
           </IconButton>
         </Tooltip>
         <Tooltip title="Excluir" arrow>
-          <IconButton onClick={() => dispatch(openModal(getModalParams(experiment)))}>
+          <IconButton onClick={() => deleteExperiment(experiment?.info?.run_id)}>
             <DeleteIcon />
           </IconButton>
         </Tooltip>
