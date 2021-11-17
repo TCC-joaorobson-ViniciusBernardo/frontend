@@ -10,7 +10,7 @@ import { openModal } from "../../components/modal/modalSlice";
 import SIGE_ENDPOINTS from "../../config/sige_endpoints";
 import SandboxFilters from "./components/SandboxFilters";
 import SandboxAnalytics from "./components/SandboxAnalytics";
-import ExperimentForm from "./components/ExperimentForm";
+import ExperimentForm from "./forms/ExperimentForm";
 import moment from "moment";
 import "moment/locale/pt-br";
 
