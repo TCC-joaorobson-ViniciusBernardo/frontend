@@ -4,6 +4,7 @@ import experimentFiltersSlice from './pages/experiment/reducers/experimentFilter
 import modalSlice from './components/modal/modalSlice';
 import sandboxSlice from './pages/sandbox/reducers/sandboxSlice';
 import sandboxFiltersSlice from './pages/sandbox/reducers/sandboxFiltersSlice';
+import realTimeChartSlice from './pages/chart/reducers/realTimeChartSlice';
 
 export default configureStore({
   reducer: {
@@ -12,5 +13,6 @@ export default configureStore({
     experimentFilters: experimentFiltersSlice,
     sandbox: sandboxSlice,
     sandboxFilters: sandboxFiltersSlice,
+    realTimeChart: realTimeChartSlice,
   },
 });
