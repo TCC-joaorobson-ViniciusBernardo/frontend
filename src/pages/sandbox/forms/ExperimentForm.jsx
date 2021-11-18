@@ -71,17 +71,6 @@ const ExperimentForm = () => {
         "https://xgboost.readthedocs.io/en/latest/python/python_api.html#xgboost.XGBRegressor",
     },
   };
-  const values = {
-    building: "ICC",
-    experiment_name: "Linear Regressor",
-    test_size: "30%",
-    start_date: "01/01/2021",
-    end_date: "08/11/2021",
-    positive: "False",
-    fit_intercept: "False",
-    remove_outliers: "True",
-    register_model: "True",
-  };
 
   const handleNext = () => {
     let newSkipped = skipped;
@@ -103,6 +92,7 @@ const ExperimentForm = () => {
       train_config: {
         ...trainConfig,
         test_size: trainConfig?.test_size / 100,
+        is_experiment: !trainConfig?.is_experiment,
       },
       data_processing_config: {
         ...dataProcessingConfig,
@@ -176,7 +166,7 @@ const ExperimentForm = () => {
           >
             {renderInfoRow("experiment_name", experiment_name)}
             {renderInfoRow("test_size", test_size)}
-            {renderInfoRow("is_experiment", is_experiment.toString())}
+            {renderInfoRow("is_experiment", (!is_experiment).toString())}
             {Object.entries(query_params).map(([key, value], index) => {
               return renderInfoRow(key, value.toString(), index);
             })}
