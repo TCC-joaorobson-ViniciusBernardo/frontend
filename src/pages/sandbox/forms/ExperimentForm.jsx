@@ -98,6 +98,7 @@ const ExperimentForm = () => {
         ...dataProcessingConfig,
         query_params: {
           ...dataProcessingConfig.query_params,
+          id: parseInt(dataProcessingConfig?.query_params?.id, 10),
           start_date: Math.floor(
             Date.parse(dataProcessingConfig?.query_params?.start_date) / 1000
           ),
